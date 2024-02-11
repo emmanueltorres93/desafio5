@@ -1,0 +1,76 @@
+<h3>Nuestros productos</h3>
+<div id='listaProductos'>
+    {{#each products}}
+    <ul>
+        <li>ID: {{this.id}}</li>
+        <li>Nombre: {{this.title}}</li>
+        <li>Codigo: {{this.code}}</li>
+        <li>Precio: {{this.price}}</li>
+        <li>Categoria: {{this.category}}</li>
+        <li>Stock: {{this.stock}}</li>
+    </ul>
+    {{/each}}
+</div>
+
+<h3>
+    Ingrese un nuevo producto
+</h3>
+
+<form action='#' id='form' method="post">
+    <label for='title'>Nombre</label>
+    <input type='text' id='title' value="asd" /><br />
+    <label for='desc'>Descripcion</label>
+    <textarea name='desc' id='desc' cols='30' rows='10'>qwe qwe qwe qwe</textarea><br />
+    <label for='code'>Codigo</label>
+    <input type='text' id='code' value="ertert" /><br />
+    <label for='price'>Precio</label>
+    <input type='text' id='price' value="67" /><br />
+    <label for='stat'>Estado</label>
+    <input type='checkbox' name='stat' id='stat' checked /><br />
+    <label for='stock'>Stock</label>
+    <input type='text' id='stock' value="123" /><br />
+    <label for='category'>Categoria</label>
+    <input type='text' id='category' value="sdfsdf" /><br />
+    <label for='thumbs'>Imagenes</label>
+    <input type='text' id='thumbs' value="qweqwqwe" /><br />
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<script src='https://code.jquery.com/jquery-3.7.1.min.js'
+    integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=' crossorigin='anonymous'></script>
+
+<script>
+    const form = document.getElementById('form');
+    const title = document.getElementById('title');
+    const desc = document.getElementById('desc');
+    const code = document.getElementById('code');
+    const price = document.getElementById('price');
+    const stat = document.getElementById('stat');
+    const stock = document.getElementById('stock');
+    const category = document.getElementById('category');
+    const thumbs = document.getElementById('thumbs');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const statVal = () => {
+            if (stat.value == 'on') {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        //if (input.value) {
+        socket.emit('new product', { title: title.value, desc: desc.value, code: code.value, price: Number(price.value), stat: statVal(), stock: Number(stock.value), category: category.value, thumbs: thumbs.value });
+        title.value = '';
+        desc.value = '';
+        code.value = '';
+        price.value = '';
+        stat.value = '';
+        stock.value = '';
+        category.value = '';
+        thumbs.value = '';
+        //}
+    });
+</script>

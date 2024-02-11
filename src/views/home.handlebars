@@ -1,0 +1,20 @@
+<h3>Nuestros productos</h3>
+
+{{#each products}}
+<ul>
+    <li>ID: {{this.id}}</li>
+    <li>Nombre: {{this.title}}</li>
+    <li>Codigo: {{this.code}}</li>
+    <li>Precio: {{this.price}}</li>
+    <li>Categoria: {{this.category}}</li>
+    <li>Stock: {{this.stock}}</li>
+</ul>
+{{/each}}
+
+<script src='https://code.jquery.com/jquery-3.7.1.min.js'
+    integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=' crossorigin='anonymous'></script>
+
+{{!
+<script>
+    { let inboundDummyData = 9001; $('.test-items').append('<li>' + inboundDummyData + '</li>'); };
+</script> }}
